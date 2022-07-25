@@ -15,14 +15,11 @@ class Menu extends Component{
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
                     <Card>
-                        <Media left middle>
-                            <Media object src={dish.image} alt={dish.name}/>
-                        </Media>
-
-                        <Media body className="ml-5">
-                            <Media heading>{dish.name}</Media>
-                            <p>{dish.description}</p>
-                        </Media>
+                        <CardImg width="100%" src={dish.image} alt={dish.name}/>
+                        
+                        <CardImgOverlay>
+                            <CardTitle>{dish.name}</CardTitle>
+                        </CardImgOverlay>
                     </Card>
                 </div>
             );
@@ -31,9 +28,7 @@ class Menu extends Component{
         return (
             <div className="container">
                 <div className="row">
-                    <Media list>
-                        {menu}
-                    </Media>
+                    {menu}
                 </div>
             </div>
         );
