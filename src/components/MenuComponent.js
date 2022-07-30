@@ -7,14 +7,17 @@ class Menu extends Component{
         super(props);
 
         this.state = {
+            selectedDish: null
         }
     }
+
+    onDoshSelect
 
     render(){
         const menu = this.props.dishes.map((dish) => {
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
-                    <Card>
+                    <Card onClick={() => this.onDishSelect(dish)}>
                         <CardImg width="100%" src={dish.image} alt={dish.name}/>
                         
                         <CardImgOverlay>
