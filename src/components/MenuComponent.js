@@ -11,6 +11,10 @@ class Menu extends Component{
         }
     }
 
+    componentDidMount(){
+        console.log('Did mount renderd');
+    }
+
     onDishSelect(dish){
         this.setState({selectedDish: dish});
     }
@@ -26,7 +30,6 @@ class Menu extends Component{
                     </CardBody>
                 </Card>
             );
-
         }
         else {
             return (
