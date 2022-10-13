@@ -5,6 +5,11 @@ class DishDetail extends Component{
 
 
     renderComments(comment){
+        const mystyle = {
+            paddingLeft: 0,
+            listStyle: 'none'
+          };
+
         if(comment != null){
             const listItems = comment.map(comm =>
                 <li>
@@ -13,7 +18,7 @@ class DishDetail extends Component{
 
                 </li>
               );
-            return <ul>{listItems}</ul>;
+            return <ul style ={mystyle}>{listItems}</ul>;
         }
         else {
             return (
