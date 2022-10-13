@@ -3,6 +3,26 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'rea
 
 class DishDetail extends Component{
 
+
+    renderComments(comment){
+        if(comment != null){
+            const listItems = comment.map(comm =>
+                <li>
+                   <p>{comm.comment}</p>
+                   <p>--{comm.author}, {comm.date}</p>
+
+                </li>
+              );
+            return <ul>{listItems}</ul>;
+        }
+        else {
+            return (
+                <div></div>
+            )
+        }
+    }
+
+
     render() {
         return (
             <div className="row">
@@ -17,7 +37,8 @@ class DishDetail extends Component{
                 </div>
 
                 <div className="col-12 col-md-5 m-1">
-                    <h1>Comments here</h1>
+                    <h4>Comments here</h4>
+                    {this.renderComments(this.props.dish.comments)}
                 </div>
             </div>
             
