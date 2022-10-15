@@ -12,6 +12,20 @@ class DishDetail extends Component{
     }
 
 
+    renderDish(dish){
+        console.log("Am rendering dish now");
+        <div className="col-12 col-md-5 m-1">
+            <Card>
+                <CardImg width="100%" src={dish.image} alt={dish.name}/>
+                <CardBody>
+                    <CardTitle>{dish.name}</CardTitle>
+                    <CardText>{dish.description}</CardText>
+                </CardBody>
+            </Card>
+        </div>
+    }
+
+
     renderComments(comment){
         const mystyle = {
             paddingLeft: 0,
@@ -20,13 +34,19 @@ class DishDetail extends Component{
 
         if(comment != null){
             const listItems = comment.map(comm =>
-                <li>
+                <li key={comm.id}>
                    <p>{comm.comment}</p>
-                   <p>--{comm.author}, {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day:'2-digit'}).format(new Date.parse(comm.date))}</p>
+                   <p>--{comm.author}, {comment.date}</p>
+                   {/* {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} */}
 
                 </li>
               );
-            return <ul style ={mystyle}>{listItems}</ul>;
+            return (
+                <div className="col-12 col-md-5 m-1">
+                    <h4>Comments here</h4>
+                    <ul style ={mystyle}>{listItems}</ul>
+                </div>
+            );
         }
         else {
             return (
@@ -37,25 +57,20 @@ class DishDetail extends Component{
 
 
     render() {
+        console.log('Dish detail component rendered')
+        if(this.props.dish != null) {
         return (
-            <div className="row">
-                <div className="col-12 col-md-5 m-1">
-                    <Card>
-                        <CardImg width="100%" src={this.props.dish.image} alt={this.props.dish.name}/>
-                        <CardBody>
-                            <CardTitle>{this.props.dish.name}</CardTitle>
-                            <CardText>{this.props.dish.description}</CardText>
-                        </CardBody>
-                    </Card>
-                </div>
-
-                <div className="col-12 col-md-5 m-1">
-                    <h4>Comments here</h4>
+            <div>
+                <div className="row">
+                    {this.renderDish(this.props.dish)}
                     {this.renderComments(this.props.dish.comments)}
                 </div>
             </div>
             
         )
+        }else{
+            <div></div>
+        }
     }
 }
 
