@@ -7,6 +7,11 @@ class DishDetail extends Component{
         console.log('Did mount renderd');
     }
 
+    componentDidUpdate(){
+        console.log('Did update renderd');
+    }
+
+
     renderComments(comment){
         const mystyle = {
             paddingLeft: 0,
