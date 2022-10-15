@@ -13,7 +13,7 @@ class DishDetail extends Component{
 
 
     renderDish(dish){
-        console.log("Am rendering dish now");
+        return (
         <div className="col-12 col-md-5 m-1">
             <Card>
                 <CardImg width="100%" src={dish.image} alt={dish.name}/>
@@ -23,6 +23,7 @@ class DishDetail extends Component{
                 </CardBody>
             </Card>
         </div>
+        )
     }
 
 
@@ -60,7 +61,7 @@ class DishDetail extends Component{
         console.log('Dish detail component rendered')
         if(this.props.dish != null) {
         return (
-            <div>
+            <div className="container">
                 <div className="row">
                     {this.renderDish(this.props.dish)}
                     {this.renderComments(this.props.dish.comments)}
