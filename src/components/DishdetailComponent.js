@@ -3,6 +3,9 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'rea
 
 class DishDetail extends Component{
 
+    componentDidMount(){
+        console.log('Did mount renderd');
+    }
 
     renderComments(comment){
         const mystyle = {
@@ -14,7 +17,7 @@ class DishDetail extends Component{
             const listItems = comment.map(comm =>
                 <li>
                    <p>{comm.comment}</p>
-                   <p>--{comm.author}, {comm.date}</p>
+                   <p>--{comm.author}, {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day:'2-digit'}).format(new Date.parse(comm.date))}</p>
 
                 </li>
               );
