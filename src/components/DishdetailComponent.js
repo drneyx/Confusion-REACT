@@ -4,11 +4,11 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'rea
 class DishDetail extends Component{
 
     componentDidMount(){
-        console.log('Did mount renderd');
+        // console.log('Did mount renderd');
     }
 
     componentDidUpdate(){
-        console.log('Did update renderd');
+        // console.log('Did update renderd');
     }
 
 
@@ -25,8 +25,6 @@ class DishDetail extends Component{
         </div>
         )
     }
-
-
     renderComments(comment){
         const mystyle = {
             paddingLeft: 0,
@@ -58,7 +56,6 @@ class DishDetail extends Component{
 
 
     render() {
-        console.log('Dish detail component rendered')
         if(this.props.dish != null) {
         return (
             <div className="container">
@@ -67,7 +64,6 @@ class DishDetail extends Component{
                     {this.renderComments(this.props.dish.comments)}
                 </div>
             </div>
-            
         )
         }else{
             <div></div>
