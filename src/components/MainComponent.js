@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import  Menu  from './MenuComponent';
 import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 import { DISHES } from '../shared/dishes';
 import DishDetail from './DishdetailComponent';
 
@@ -31,6 +32,7 @@ class Main extends Component {
             onClick={(dishId) => this.onDishSelect(dishId)}
         />
        <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+       <Footer/>
       </div>
     );
   }
