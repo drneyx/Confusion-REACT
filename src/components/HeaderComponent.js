@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler } from 'reactstrap';
 
 class Header extends Component {
@@ -21,7 +22,7 @@ class Header extends Component {
         return (
             <>
                 <Navbar dark expand="md">
-                    <div className="container">
+                    <div className="container d-flex">
                         <NavbarToggler onClick={this.toggleNav}/>
                         <NavbarBrand className="mr-auto" href='/'>
                             <img src="assets/images/logo.png" height="30" width="41"alt="Nice Restaurant"/>
@@ -29,27 +30,27 @@ class Header extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/home">
-                                        <span className="fa fa-home fa-lg">Home</span>
-                                    </NavLink>
+                                    <Link className="nav-link" to="/home">
+                                        <span className="fa fa-home fa-lg ">  Home</span>
+                                    </Link>
                                 </NavItem>
 
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/aboutus">
-                                        <span className="fa fa-info fa-lg">About Us</span>
-                                    </NavLink>
+                                    <Link className="nav-link" to="/aboutus">
+                                        <span className="fa fa-info fa-lg">  About Us</span>
+                                    </Link>
                                 </NavItem>
 
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/menu">
-                                        <span className="fa fa-list fa-lg">Menu</span>
-                                    </NavLink>
+                                    <Link className="nav-link" to="/menu">
+                                        <span className="fa fa-list fa-lg">  Menu</span>
+                                    </Link>
                                 </NavItem>
 
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/contactus">
-                                        <span className="fa fa-address-card fa-lg">Contant Us</span>
-                                    </NavLink>
+                                    <Link className="nav-link" to="/contactus">
+                                        <span className="fa fa-address-card fa-lg">  Contant Us</span>
+                                    </Link>
                                 </NavItem>
                             </Nav>
                         </Collapse>
