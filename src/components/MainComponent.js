@@ -31,9 +31,8 @@ class Main extends Component {
         <Header/>
             <Routes>
                 <Route path="/home" element={<HomePage/>}/>
-                <Route exact path="/menu"  element={() => <Menu dishes={this.state.dishes}/>}/>
+                <Route exact path="/dishes"  element={<Menu dishes={this.state.dishes}/>}/>
                 <Route path="/" element={<Navigate to ="/home" />}/>
-
             </Routes>
        <Footer/>
       </div>
