@@ -40,12 +40,10 @@ class Main extends Component {
 
     const  DishWithId = () => {
       let { dishId } = useParams();
-      
-      console.log(dishId);
       return (
           <DishDetail 
-          dish={this.state.dishes.filter((dish) => dish.id === parseInt(dishId,10)[0])} 
-          comments={this.state.comments.filter((comment) => comment.dishId === parseInt(dishId,10)[0])}
+          dish={this.state.dishes.filter((dish) => dish.id === parseInt(dishId, 10))[0]} 
+          comments={this.state.comments.filter((comment) => comment.dishId === parseInt(dishId, 10))}
           />
       )
   }

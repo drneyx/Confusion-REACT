@@ -4,6 +4,7 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb
 
 
    function  RenderDish({dish}){
+   
         return (
         <div className="col-12 col-md-5 m-1">
             <Card>
@@ -49,6 +50,7 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb
 
     const DishDetail = (props) => {
         if(props.dish != null) {
+            // console.log(props.dish);
         return (
             <div className="container">
                 <div className="row">
