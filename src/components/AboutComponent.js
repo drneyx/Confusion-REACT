@@ -4,9 +4,18 @@ import { Link } from 'react-router-dom';
 
 function About(props) {
 
+    function RenderLeader(props){
+        return (
+            <Media>
+                
+            </Media>
+        )
+
+    }
+
     const leaders = props.leaders.map((leader) => {
         return (
-            <p>Leader {leader.name}</p>
+            <RenderLeader leader={leader}/>
         );
     });
 
