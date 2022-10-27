@@ -38,6 +38,12 @@ class Main extends Component {
         )
     }
 
+    const DishWithId = () => {
+      return (
+          
+      )
+  }
+
     return (
       <div>
         <Header/>
@@ -45,6 +51,7 @@ class Main extends Component {
                 <Route path="/home" element={<HomePage/>}/>
                 <Route path="/contactus" element={<Contact/> }/>
                 <Route exact path="/menu"  element={<Menu dishes={this.state.dishes}/>}/>
+                <Route path="/menu/:dishId" component={DishWithId}/>
                 <Route path="/" element={<Navigate to ="/home" />}/>
             </Routes>
        <Footer/>
