@@ -6,7 +6,7 @@ import Footer from './FooterComponent';
 import { DISHES } from '../shared/dishes';
 import DishDetail from './DishdetailComponent';
 import Home from './HomeComponent';
-import {Routes, Route, Navigate } from 'react-router-dom';
+import {Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom';
 import Contact from './ContantComponent';
 import { LEADERS } from '../shared/leaders';
 import { COMMENTS } from '../shared/comments';
@@ -38,23 +38,27 @@ class Main extends Component {
         )
     }
 
-    const DishWithId = ({match}) => {
+    const  DishWithId = () => {
+      let { dishId } = useParams();
+      
+      console.log(dishId);
       return (
           <DishDetail 
-          dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10)[0])} 
-          comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10)[0])}
+          dish={this.state.dishes.filter((dish) => dish.id === parseInt(dishId,10)[0])} 
+          comments={this.state.comments.filter((comment) => comment.dishId === parseInt(dishId,10)[0])}
           />
       )
   }
+
 
     return (
       <div>
         <Header/>
             <Routes>
-                <Route path="/home" component={HomePage}/>
-                <Route exact path="/menu"  component={() => <Menu dishes={this.state.dishes}/>}/>
-                <Route path="/menu/:dishId" component={DishWithId}/>
-                <Route exact path="/contactus" element={Contact}/>
+                <Route path="/home" element={<HomePage/>}/>
+                <Route exact path="/menu"  element={<Menu dishes={this.state.dishes}/>}/>
+                <Route path="/menu/:dishId" element={<DishWithId />}/>
+                <Route exact path="/contactus" element={<Contact/>}/>
                 <Route path="/" element={<Navigate to ="/home" />}/>
             </Routes>
        <Footer/>
