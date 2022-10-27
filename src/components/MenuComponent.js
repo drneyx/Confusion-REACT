@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 
 function RenderMenuItem({dish, onClick}) {
@@ -30,6 +30,12 @@ const Menu = (props) => {
 
     return (
         <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to="/home">Home</Link> </BreadcrumbItem>
+                    <BreadcrumbItem active>Menu </BreadcrumbItem>
+                </Breadcrumb>
+            </div>
             <div className="row">
                 {menu}
             </div>  
