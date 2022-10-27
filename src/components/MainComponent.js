@@ -7,6 +7,7 @@ import { DISHES } from '../shared/dishes';
 import DishDetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import {Routes, Route, Navigate } from 'react-router-dom';
+import Contact from './ContantComponent';
 
 
 class Main extends Component {
@@ -31,6 +32,7 @@ class Main extends Component {
         <Header/>
             <Routes>
                 <Route path="/home" element={<HomePage/>}/>
+                <Route path="/contactus" element={<Contact/> }/>
                 <Route exact path="/menu"  element={<Menu dishes={this.state.dishes}/>}/>
                 <Route path="/" element={<Navigate to ="/home" />}/>
             </Routes>
