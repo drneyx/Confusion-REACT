@@ -6,9 +6,18 @@ function About(props) {
 
     function RenderLeader(props){
         return (
-            <Media>
-                
-            </Media>
+            <div key={props.leader.id} className="col-12 mt-5">
+                <Media tag="ul" className="row">
+                    <Media left middle className="col-2">
+                        <Media object src={props.leader.image} alt={props.leader.name} />
+                    </Media>
+                    <Media body className="col-10">
+                        <Media heading>{props.leader.name}</Media>
+                        <p>{props.leader.abbr} {props.leader.designation}</p>
+                        <p>{props.leader.description}</p>
+                    </Media>
+                </Media>
+            </div>
         )
 
     }
