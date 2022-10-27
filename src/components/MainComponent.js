@@ -8,6 +8,9 @@ import DishDetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import {Routes, Route, Navigate } from 'react-router-dom';
 import Contact from './ContantComponent';
+import { LEADERS } from '../shared/leaders';
+import { COMMENTS } from '../shared/comments';
+import { PROMOTIONS } from '../shared/promotions';
 
 
 class Main extends Component {
@@ -17,13 +20,16 @@ class Main extends Component {
 
     this.state = {
       dishes: DISHES,
+      leaders: LEADERS,
+      comments: COMMENTS,
+      promotions: PROMOTIONS,
     };    
   }
 
   render() {
     const HomePage = () => {
         return (
-            <Home/>
+            <Home dish={this.state.dishes.filter((dish) => dish.featured)}/>
         )
     }
 
