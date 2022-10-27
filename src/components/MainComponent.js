@@ -38,9 +38,9 @@ class Main extends Component {
         )
     }
 
-    const DishWithId = () => {
+    const DishWithId = ({match}) => {
       return (
-          
+          <DishDetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10)[0])} />
       )
   }
 
@@ -48,10 +48,10 @@ class Main extends Component {
       <div>
         <Header/>
             <Routes>
-                <Route path="/home" element={<HomePage/>}/>
-                <Route path="/contactus" element={<Contact/> }/>
-                <Route exact path="/menu"  element={<Menu dishes={this.state.dishes}/>}/>
+                <Route path="/home" component={HomePage}/>
+                <Route exact path="/menu"  component={() => <Menu dishes={this.state.dishes}/>}/>
                 <Route path="/menu/:dishId" component={DishWithId}/>
+                <Route exact path="/contactus" element={Contact}/>
                 <Route path="/" element={<Navigate to ="/home" />}/>
             </Routes>
        <Footer/>
