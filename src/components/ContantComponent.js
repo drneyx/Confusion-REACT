@@ -68,7 +68,45 @@ class  Contact extends Component {
                         <FormGroup row>
                             <Label htmlfor="firstName" md={2}>First Name</Label>
                             <Col md={10}>
-                                <Input type="text" id="firstName" name="firstName"/>
+                                <Input type="text" id="firstName" name="firstName" placeholder='First Name' value={this.state.firstName}/>
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Label htmlfor="lastName" md={2}>Last Name</Label>
+                            <Col md={10}>
+                                <Input type="text" id="lastName" name="lastName" placeholder='Last Name' value={this.state.lastName}/>
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Label htmlfor="telnum" md={2}>Contact Tel.</Label>
+                            <Col md={10}>
+                                <Input type="tel" id="telnum" name="telnum" placeholder='Tel. Number' value={this.state.telnum}/>
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Label htmlfor="email" md={2}>Email</Label>
+                            <Col md={10}>
+                                <Input type="email" id="email" name="email" placeholder='Email' value={this.state.email}/>
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Col md={{size: 6, offset: 2}} >
+                                <FormGroup check>
+                                    <Label check></Label>
+                                    <Input type="checkbox" name="agree" checked={this.state.agree} /> {' '}
+                                    <strong>May we contact you?</strong>
+                                </FormGroup>
+                            </Col>
+                            <Col md={{size: 3, offset: 1}} >
+                                <Input type="select" name="contactType" value={this.state.contactType}>
+                                    <option>Tel.</option>
+                                    <option>Email</option>
+                                </Input>
+
                             </Col>
                         </FormGroup>
                     </Form>
