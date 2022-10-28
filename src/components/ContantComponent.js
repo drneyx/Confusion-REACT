@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, Col, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Col, Form, FormGroup, Input, Label } from 'reactstrap';
 
 class  Contact extends Component {
 
@@ -105,8 +105,20 @@ class  Contact extends Component {
                                 <Input type="select" name="contactType" value={this.state.contactType}>
                                     <option>Tel.</option>
                                     <option>Email</option>
-                                </Input>
+                                </Input> 
+                            </Col>
+                        </FormGroup>
 
+                        <FormGroup row>
+                            <Label htmlfor="message" md={2}>Your Feedback</Label>
+                            <Col md={10}>
+                                <Input type="textarea" id="message" name="message"  rows="12" value={this.state.message}/>
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Col md={{size:10, offset:2}}>
+                                <Button type="submit" color="primary">Send Feedback</Button>
                             </Col>
                         </FormGroup>
                     </Form>
