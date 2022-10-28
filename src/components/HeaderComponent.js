@@ -8,14 +8,22 @@ class Header extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isNavOpen: false
+            isNavOpen: false,
+            isModalOpen: false
         };
         this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     toggleNav(){
         this.setState({
             isNavOpen: !this.state.isNavOpen
+        })
+    }
+
+    toggleModal(){
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
         })
     }
     render() {
@@ -66,10 +74,10 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
-                <Modal>
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader>Login</ModalHeader>
                     <ModalBody>
-                        
+
                     </ModalBody>
                 </Modal>
             </>
