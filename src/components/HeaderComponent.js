@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 class Header extends Component {
 
@@ -66,6 +66,12 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
+                <Modal>
+                    <ModalHeader>Login</ModalHeader>
+                    <ModalBody>
+                        
+                    </ModalBody>
+                </Modal>
             </>
         )
     }
