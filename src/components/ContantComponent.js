@@ -54,7 +54,26 @@ class  Contact extends Component {
 
         if(this.state.touched.firstName && firstName.length < 3){
             errors.firstName = 'First name should be greater than 3 characters';
+        }else if (this.state.touched.firstName && firstName.length > 10){
+            errors.firstName = 'First name should not be greater than 10 characters';
         }
+
+        if(this.state.touched.lastName && lastName.length < 3){
+            errors.lastName = 'First name should be greater than 3 characters';
+        }else if (this.state.touched.lastName && lastName.length > 10){
+            errors.lastName = 'First name should not be greater than 10 characters';
+        }
+
+        const reg = /^\d+$/;
+        if (this.state.touched.telnum && !reg.test(telnum)){
+            errors.telnum = 'Tel. Number should contain only numbers and underscores';
+        }
+
+        if(this.state.touched.email && email.split('').filter(x => x === '@').length !== 1){
+            errors.email = 'Email should contain @';
+        }
+
+        return errors;
     }
 
     handleSubmit(event) {
@@ -67,6 +86,7 @@ class  Contact extends Component {
 
 
     render(){
+        
     return(
         <div className="container">
             <div className="row">
