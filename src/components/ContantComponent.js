@@ -18,6 +18,15 @@ class  Contact extends Component {
         }
     }
 
+    handleInputChange(event) {
+
+    }
+
+    handleSubmit(event) {
+        console.log("Current state is: " + JSON.stringify(this.state))
+        alert("Current state is: " + JSON.stringify(this.state))
+    }
+
     render(){
     return(
         <div className="container">
