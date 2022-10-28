@@ -15,6 +15,12 @@ class  Contact extends Component {
             agree: false,
             contactType: 'Tel.',
             message:'',
+            touched: {
+                firstName: false,
+                lastName: false,
+                telnum: false,
+                email: false
+            }
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -89,28 +95,28 @@ class  Contact extends Component {
                         <FormGroup row>
                             <Label htmlfor="firstName" md={2}>First Name</Label>
                             <Col md={10}>
-                                <Input type="text" id="firstName" name="firstName" placeholder='First Name' value={this.state.firstName}/>
+                                <Input type="text" id="firstName" name="firstName" placeholder='First Name' value={this.state.firstName} onChange={this.handleInputChange}/>
                             </Col>
                         </FormGroup>
 
                         <FormGroup row>
                             <Label htmlfor="lastName" md={2}>Last Name</Label>
                             <Col md={10}>
-                                <Input type="text" id="lastName" name="lastName" placeholder='Last Name' value={this.state.lastName}/>
+                                <Input type="text" id="lastName" name="lastName" placeholder='Last Name' value={this.state.lastName} onChange={this.handleInputChange}/>
                             </Col>
                         </FormGroup>
 
                         <FormGroup row>
                             <Label htmlfor="telnum" md={2}>Contact Tel.</Label>
                             <Col md={10}>
-                                <Input type="tel" id="telnum" name="telnum" placeholder='Tel. Number' value={this.state.telnum}/>
+                                <Input type="tel" id="telnum" name="telnum" placeholder='Tel. Number' value={this.state.telnum} onChange={this.handleInputChange}/>
                             </Col>
                         </FormGroup>
 
                         <FormGroup row>
                             <Label htmlfor="email" md={2}>Email</Label>
                             <Col md={10}>
-                                <Input type="email" id="email" name="email" placeholder='Email' value={this.state.email}/>
+                                <Input type="email" id="email" name="email" placeholder='Email' value={this.state.email} onChange={this.handleInputChange}/>
                             </Col>
                         </FormGroup>
 
@@ -118,12 +124,12 @@ class  Contact extends Component {
                             <Col md={{size: 6, offset: 2}} >
                                 <FormGroup check>
                                     <Label check></Label>
-                                    <Input type="checkbox" name="agree" checked={this.state.agree} /> {' '}
+                                    <Input type="checkbox" name="agree" checked={this.state.agree} onChange={this.handleInputChange}/> {' '}
                                     <strong>May we contact you?</strong>
                                 </FormGroup>
                             </Col>
                             <Col md={{size: 3, offset: 1}} >
-                                <Input type="select" name="contactType" value={this.state.contactType}>
+                                <Input type="select" name="contactType" value={this.state.contactType} onChange={this.handleInputChange}>
                                     <option>Tel.</option>
                                     <option>Email</option>
                                 </Input> 
@@ -133,7 +139,7 @@ class  Contact extends Component {
                         <FormGroup row>
                             <Label htmlfor="message" md={2}>Your Feedback</Label>
                             <Col md={10}>
-                                <Input type="textarea" id="message" name="message"  rows="12" value={this.state.message}/>
+                                <Input type="textarea" id="message" name="message"  rows="12" value={this.state.message} onChange={this.handleInputChange}/>
                             </Col>
                         </FormGroup>
 
