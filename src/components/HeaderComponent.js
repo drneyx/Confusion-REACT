@@ -1,3 +1,4 @@
+import { Button } from 'bootstrap';
 import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler, Modal, ModalHeader, ModalBody } from 'reactstrap';
@@ -61,6 +62,14 @@ class Header extends Component {
                                     </Link>
                                 </NavItem>
                             </Nav>
+
+                            <Nav className="ml-auto" navbar>
+                                <NavItem>
+                                    <Button outline onClick={this.toggleModal}>
+                                        <span className="fa fa-sign-in fa-lg"></span> Login
+                                    </Button>
+                                </NavItem>
+                            </Nav>
                         </Collapse>
                     </div>
                 </Navbar>
@@ -75,7 +84,7 @@ class Header extends Component {
                     </div>
                 </div>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader>Login</ModalHeader>
+                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
 
                     </ModalBody>
