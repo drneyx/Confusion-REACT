@@ -2,7 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-function Contact(props) {
+class  Contact extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstName: '',
+            lastName: '',
+            telnum: '',
+            email: '',
+            agree: false,
+            contactType: 'Tel.',
+            message:'',
+        }
+    }
+
+    render(){
     return(
         <div className="container">
             <div className="row">
@@ -42,7 +58,6 @@ function Contact(props) {
                 </div>
             </div>
         </div>
-    );
-}
+    );}}
 
 export default Contact;
