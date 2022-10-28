@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, Form, FormGroup, Label } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Col, Form, FormGroup, Input, Label } from 'reactstrap';
 
 class  Contact extends Component {
 
@@ -66,7 +66,10 @@ class  Contact extends Component {
                 <div className="col-12 col-md-9">
                     <Form>
                         <FormGroup row>
-                            <Label></Label>
+                            <Label htmlfor="firstName" md={2}>First Name</Label>
+                            <Col md={10}>
+                                <Input type="text" id="firstName" name="firstName"/>
+                            </Col>
                         </FormGroup>
                     </Form>
                 </div>
