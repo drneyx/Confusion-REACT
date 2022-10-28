@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler, Modal, ModalHeader, ModalBody, Button } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler, Modal, ModalHeader, ModalBody, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Header extends Component {
 
@@ -87,7 +87,17 @@ class Header extends Component {
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
+                        <Form onSubmit={this.handleLogin}>
+                            <FormGroup>
+                                <Label htmlFor="username"> Username</Label>
+                                <Input type="text" id="username" name="username"/>
+                            </FormGroup>
 
+                            <FormGroup>
+                                <Label htmlFor="password"> Password</Label>
+                                <Input type="password" id="password" name="password"/>
+                            </FormGroup>
+                        </Form>
                     </ModalBody>
                 </Modal>
             </>
