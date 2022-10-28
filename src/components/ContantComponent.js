@@ -16,6 +16,9 @@ class  Contact extends Component {
             contactType: 'Tel.',
             message:'',
         }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     handleInputChange(event) {
@@ -25,6 +28,8 @@ class  Contact extends Component {
     handleSubmit(event) {
         console.log("Current state is: " + JSON.stringify(this.state))
         alert("Current state is: " + JSON.stringify(this.state))
+        event.preventDefault();
+
     }
 
     render(){
@@ -73,7 +78,7 @@ class  Contact extends Component {
                 </div>
 
                 <div className="col-12 col-md-9">
-                    <Form>
+                    <Form onSubmit={this.handleSubmit}>
                         <FormGroup row>
                             <Label htmlfor="firstName" md={2}>First Name</Label>
                             <Col md={10}>
