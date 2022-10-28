@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, Button, Col, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Col, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 
 class  Contact extends Component {
 
@@ -86,7 +86,8 @@ class  Contact extends Component {
 
 
     render(){
-        
+
+    const errors =  this.validate(this.state.firstName, this.state.lastName, this.state.telnum, this.state.email);
     return(
         <div className="container">
             <div className="row">
@@ -137,6 +138,7 @@ class  Contact extends Component {
                             <Label htmlfor="firstName" md={2}>First Name</Label>
                             <Col md={10}>
                                 <Input type="text" id="firstName" name="firstName" placeholder='First Name' value={this.state.firstName} onChange={this.handleInputChange}/>
+                                <FormFeedback>{errors.firstName}</FormFeedback>
                             </Col>
                         </FormGroup>
 
@@ -144,6 +146,7 @@ class  Contact extends Component {
                             <Label htmlfor="lastName" md={2}>Last Name</Label>
                             <Col md={10}>
                                 <Input type="text" id="lastName" name="lastName" placeholder='Last Name' value={this.state.lastName} onChange={this.handleInputChange}/>
+                                <FormFeedback>{errors.lastName}</FormFeedback>
                             </Col>
                         </FormGroup>
 
@@ -151,6 +154,7 @@ class  Contact extends Component {
                             <Label htmlfor="telnum" md={2}>Contact Tel.</Label>
                             <Col md={10}>
                                 <Input type="tel" id="telnum" name="telnum" placeholder='Tel. Number' value={this.state.telnum} onChange={this.handleInputChange}/>
+                                <FormFeedback>{errors.telnum}</FormFeedback>
                             </Col>
                         </FormGroup>
 
@@ -158,6 +162,7 @@ class  Contact extends Component {
                             <Label htmlfor="email" md={2}>Email</Label>
                             <Col md={10}>
                                 <Input type="email" id="email" name="email" placeholder='Email' value={this.state.email} onChange={this.handleInputChange}/>
+                                <FormFeedback>{errors.email}</FormFeedback>
                             </Col>
                         </FormGroup>
 
