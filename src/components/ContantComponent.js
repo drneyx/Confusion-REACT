@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Form, FormGroup, Label } from 'reactstrap';
 
 class  Contact extends Component {
 
@@ -55,6 +55,20 @@ class  Contact extends Component {
                         <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
                         <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                     </div>
+                </div>
+            </div>
+
+            <div className="row row-content">
+                <div className="col-12">
+                    <h3>Send us Your Feedback</h3>
+                </div>
+
+                <div className="col-12 col-md-9">
+                    <Form>
+                        <FormGroup row>
+                            <Label></Label>
+                        </FormGroup>
+                    </Form>
                 </div>
             </div>
         </div>
