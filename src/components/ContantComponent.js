@@ -35,7 +35,26 @@ class  Contact extends Component {
         this.setState({
             [name] : value
         })
+    }
 
+
+    handleBlur = (field) => (evt) =>{
+        this.setState({
+            touched: { ...this.state.touched, [field]: true}
+        })
+    }
+
+    validate(firstName, lastName, telnum, email){
+        const errors = {
+            firstName: '',
+            lastName: '',
+            telnum: '',
+            email: '',
+        };
+
+        if(this.state.touched.firstName && firstName.length < 3){
+            errors.firstName = 'First name should be greater than 3 characters';
+        }
     }
 
     handleSubmit(event) {
@@ -44,6 +63,8 @@ class  Contact extends Component {
         event.preventDefault();
 
     }
+
+
 
     render(){
     return(
