@@ -136,7 +136,7 @@ class  Contact extends Component {
                 <div className="col-12 col-md-9">
                     <Form onSubmit={this.handleSubmit}>
                         <FormGroup row>
-                            <Label htmlfor="firstName" md={2}>First Name</Label>
+                            <Label htmlFor="firstName" md={2}>First Name</Label>
                             <Col md={10}>
                                 <Input type="text" id="firstName" name="firstName" placeholder='First Name' 
                                        value={this.state.firstName} 
@@ -149,7 +149,7 @@ class  Contact extends Component {
                         </FormGroup>
 
                         <FormGroup row>
-                            <Label htmlfor="lastName" md={2}>Last Name</Label>
+                            <Label htmlFor="lastName" md={2}>Last Name</Label>
                             <Col md={10}>
                                 <Input type="text" id="lastName" name="lastName" placeholder='Last Name' 
                                        value={this.state.lastName} 
@@ -162,7 +162,7 @@ class  Contact extends Component {
                         </FormGroup>
 
                         <FormGroup row>
-                            <Label htmlfor="telnum" md={2}>Contact Tel.</Label>
+                            <Label htmlFor="telnum" md={2}>Contact Tel.</Label>
                             <Col md={10}>
                                 <Input type="tel" id="telnum" name="telnum" placeholder='Tel. Number' 
                                        value={this.state.telnum} 
@@ -175,7 +175,7 @@ class  Contact extends Component {
                         </FormGroup>
 
                         <FormGroup row>
-                            <Label htmlfor="email" md={2}>Email</Label>
+                            <Label htmlFor="email" md={2}>Email</Label>
                             <Col md={10}>
                                 <Input type="email" id="email" name="email" placeholder='Email'
                                        value={this.state.email} 
@@ -204,7 +204,7 @@ class  Contact extends Component {
                         </FormGroup>
 
                         <FormGroup row>
-                            <Label htmlfor="message" md={2}>Your Feedback</Label>
+                            <Label htmlFor="message" md={2}>Your Feedback</Label>
                             <Col md={10}>
                                 <Input type="textarea" id="message" name="message"  rows="12" value={this.state.message} onChange={this.handleInputChange}/>
                             </Col>
