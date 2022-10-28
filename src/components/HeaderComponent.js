@@ -13,6 +13,7 @@ class Header extends Component {
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
     }
 
     toggleNav(){
@@ -25,6 +26,12 @@ class Header extends Component {
         this.setState({
             isModalOpen: !this.state.isModalOpen
         })
+    }
+
+    handleLogin(event){
+        this.toggleModal();
+        alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
+        event.preventDefault();
     }
     render() {
         return (
@@ -97,6 +104,14 @@ class Header extends Component {
                                 <Label htmlFor="password"> Password</Label>
                                 <Input type="password" id="password" name="password"/>
                             </FormGroup>
+
+                            <FormGroup check>
+                                <Label check>
+                                    <Input type="checkbox" name="remember"/>
+                                    Remember Me
+                                </Label>
+                            </FormGroup>
+                            <Button type="submit" value="submit" color='primary'>Login</Button>
                         </Form>
                     </ModalBody>
                 </Modal>
