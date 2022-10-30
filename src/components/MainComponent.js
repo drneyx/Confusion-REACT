@@ -17,7 +17,7 @@ const mapStateToProps = state => {
     dishes: state.dishes,
     comments: state.comments,
     promotions: state.promotions,
-    leader: state.leader,
+    leaders: state.leaders,
   }
 }
 
@@ -31,10 +31,10 @@ class Main extends Component {
     const HomePage = () => {
         return (
             <Home 
-            dish={this.props.state.dishes.filter((dish) => dish.featured)[0]}
-            promotion={this.props.state.promotions.filter((promo) => promo.featured)[0]}
-            leader={this.props.state.leaders.filter((leader) => leader.featured)[0]}
-            comment={this.props.state.comments.filter((comm) => comm.featured)[0]}
+            dish={this.props.dishes.filter((dish) => dish.featured)[0]}
+            promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
+            leader={this.props.leaders.filter((leader) => leader.featured)[0]}
+            comment={this.props.comments.filter((comm) => comm.featured)[0]}
             />
         )
     }
@@ -43,8 +43,8 @@ class Main extends Component {
       let { dishId } = useParams();
       return (
           <DishDetail 
-          dish={this.props.state.dishes.filter((dish) => dish.id === parseInt(dishId, 10))[0]} 
-          comments={this.props.state.comments.filter((comment) => comment.dishId === parseInt(dishId, 10))}
+          dish={this.props.dishes.filter((dish) => dish.id === parseInt(dishId, 10))[0]} 
+          comments={this.props.comments.filter((comment) => comment.dishId === parseInt(dishId, 10))}
           />
       )
   }
@@ -55,10 +55,10 @@ class Main extends Component {
             <Header/>
                 <Routes>
                     <Route path="/home" element={<HomePage/>}/>
-                    <Route exact path="/menu"  element={<Menu dishes={this.props.state.dishes}/>}/>
+                    <Route exact path="/menu"  element={<Menu dishes={this.props.dishes}/>}/>
                     <Route path="/menu/:dishId" element={<DishWithId />}/>
                     <Route exact path="/contactus" element={<Contact/>}/>
-                    <Route exact path="/aboutus" element={<About leaders={this.props.state.leaders}/>}/>
+                    <Route exact path="/aboutus" element={<About leaders={this.props.leaders}/>}/>
                     <Route path="/" element={<Navigate to ="/home" />}/>
                 </Routes>
             <Footer/>
