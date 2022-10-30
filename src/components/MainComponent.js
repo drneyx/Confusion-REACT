@@ -8,16 +8,26 @@ import DishDetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import {Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom';
 import Contact from './ContantComponent';
-
 import About from './AboutComponent';
+import { connect } from 'react-redux';
 
+
+const mapStateToProps = state => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments,
+    promotions: state.promotions,
+    leader: state.leader,
+  }
+}
 
 class Main extends Component {
 
   constructor(props) {
     super(props);
-  
   }
+
+
 
   render() {
     const HomePage = () => {
