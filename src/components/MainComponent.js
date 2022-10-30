@@ -3,14 +3,12 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import  Menu  from './MenuComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import { DISHES } from '../shared/dishes';
+
 import DishDetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import {Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom';
 import Contact from './ContantComponent';
-import { LEADERS } from '../shared/leaders';
-import { COMMENTS } from '../shared/comments';
-import { PROMOTIONS } from '../shared/promotions';
+
 import About from './AboutComponent';
 
 
@@ -18,13 +16,7 @@ class Main extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      dishes: DISHES,
-      leaders: LEADERS,
-      comments: COMMENTS,
-      promotions: PROMOTIONS,
-    };    
+  
   }
 
   render() {
