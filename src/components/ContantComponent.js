@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, Button, Col, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Col, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
 class  Contact extends Component {
@@ -68,7 +68,7 @@ class  Contact extends Component {
 
                 <div className="col-12 col-md-9">
                     <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                        <FormGroup row>
+                        <Row className="form-group">
                             <Label htmlFor="firstName" md={2}>First Name</Label>
                             <Col md={10}>
                                 <Input type="text" id="firstName" name="firstName" placeholder='First Name' 
@@ -79,9 +79,9 @@ class  Contact extends Component {
                                        onBlur={this.handleBlur('firstName')}/>
                                 <FormFeedback>{errors.firstName}</FormFeedback>
                             </Col>
-                        </FormGroup>
+                        </Row>
 
-                        <FormGroup row>
+                        <Row className="form-group">
                             <Label htmlFor="lastName" md={2}>Last Name</Label>
                             <Col md={10}>
                                 <Input type="text" id="lastName" name="lastName" placeholder='Last Name' 
@@ -92,9 +92,9 @@ class  Contact extends Component {
                                        onBlur={this.handleBlur('lastName')}/>
                                 <FormFeedback>{errors.lastName}</FormFeedback>
                             </Col>
-                        </FormGroup>
+                        </Row>
 
-                        <FormGroup row>
+                        <Row className="form-group">
                             <Label htmlFor="telnum" md={2}>Contact Tel.</Label>
                             <Col md={10}>
                                 <Input type="tel" id="telnum" name="telnum" placeholder='Tel. Number' 
@@ -105,9 +105,9 @@ class  Contact extends Component {
                                        onBlur={this.handleBlur('telnum')}/>
                                 <FormFeedback>{errors.telnum}</FormFeedback>
                             </Col>
-                        </FormGroup>
+                        </Row>
 
-                        <FormGroup row>
+                        <Row className="form-group">
                             <Label htmlFor="email" md={2}>Email</Label>
                             <Col md={10}>
                                 <Input type="email" id="email" name="email" placeholder='Email'
@@ -118,9 +118,9 @@ class  Contact extends Component {
                                        onBlur={this.handleBlur('email')}/>
                                 <FormFeedback>{errors.email}</FormFeedback>
                             </Col>
-                        </FormGroup>
+                        </Row>
 
-                        <FormGroup row>
+                        <Row className="form-group">
                             <Col md={{size: 6, offset: 2}} >
                                 <FormGroup check>
                                     <Label check></Label>
@@ -134,20 +134,20 @@ class  Contact extends Component {
                                     <option>Email</option>
                                 </Input> 
                             </Col>
-                        </FormGroup>
+                        </Row>
 
-                        <FormGroup row>
+                        <Row className="form-group">
                             <Label htmlFor="message" md={2}>Your Feedback</Label>
                             <Col md={10}>
                                 <Input type="textarea" id="message" name="message"  rows="12" value={this.state.message} onChange={this.handleInputChange}/>
                             </Col>
-                        </FormGroup>
+                        </Row>
 
-                        <FormGroup row>
+                        <Row className="form-group">
                             <Col md={{size:10, offset:2}}>
                                 <Button type="submit" color="primary">Send Feedback</Button>
                             </Col>
-                        </FormGroup>
+                        </Row>
                     </LocalForm>
                 </div>
             </div>
