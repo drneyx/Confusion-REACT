@@ -41,3 +41,8 @@ address{
 .navbar-dark {
     background-color: #512DA8;
 }
+
+
+.form-group {
+    margin-bottom: 15px;
+  }
