@@ -15,6 +15,7 @@ class  Contact extends Component {
     handleSubmit(values) {
         console.log("Current state is: " + JSON.stringify(values))
         alert("Current state is: " + JSON.stringify(values))
+
     }
 
 
@@ -95,20 +96,24 @@ class  Contact extends Component {
                         </Row>
 
                         <Row className="form-group">
-                            <Col md={{size: 6, offset: 2}} >
-                                <div className="form-check">
-                                    <Label check></Label>
-                                    <Control.checkbox model=".agree" name="agree"  className="form-control"/> {' '}
-                                    <strong>May we contact you?</strong>
-                                </div>
-                            </Col>
-                            <Col md={{size: 3, offset: 1}} >
-                                <Control.select model=".contactType"  className="form-control" name="contactType">
-                                    <option>Tel.</option>
-                                    <option>Email</option>
-                                </Control.select> 
-                            </Col>
-                        </Row>
+                                <Col md={{size: 6, offset: 2}}>
+                                    <div className="form-check">
+                                        <Label check>
+                                            <Control.checkbox model=".agree" name="agree"
+                                                className="form-check-input"
+                                                 /> {' '}
+                                                <strong>May we contact you?</strong>
+                                        </Label>
+                                    </div>
+                                </Col>
+                                <Col md={{size: 3, offset: 1}}>
+                                    <Control.select model=".contactType" name="contactType"
+                                        className="form-control">
+                                        <option>Tel.</option>
+                                        <option>Email</option>
+                                    </Control.select>
+                                </Col>
+                            </Row>
 
                         <Row className="form-group">
                             <Label htmlFor="message" md={2}>Your Feedback</Label>
