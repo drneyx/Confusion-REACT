@@ -85,7 +85,8 @@ class  Contact extends Component {
                                     <Errors className="text-danger" model=".firstName" show="touched" 
                                     message={{
                                         required: 'Required',
-                                        minLength: 'Must be greater than 2 characters'
+                                        minLength: 'Must be greater than 2 characters',
+                                        maxLength: 'Must be less than 10 characters'
                                     }}/>
                             </Col>
                         </Row>
@@ -93,21 +94,57 @@ class  Contact extends Component {
                         <Row className="form-group">
                             <Label htmlFor="lastName" md={2}>Last Name</Label>
                             <Col md={10}>
-                                <Control.text model=".lastName" id="lastName" name="lastName" placeholder='Last Name' className="form-control"/>
+                                <Control.text model=".lastName" id="lastName" name="lastName" placeholder='Last Name' 
+                                className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(10)
+                                }}/>
+                                 <Errors className="text-danger" 
+                                    model=".lastName"
+                                    show="touched" 
+                                    message={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 characters',
+                                        maxLength: 'Must be less than 10 characters'
+                                    }}/>
                             </Col>
                         </Row>
 
                         <Row className="form-group">
                             <Label htmlFor="telnum" md={2}>Contact Tel.</Label>
                             <Col md={10}>
-                                <Control.text model=".telnum" id="telnum" name="telnum" placeholder='Tel. Number' className="form-control"/>
+                                <Control.text model=".telnum" id="telnum" name="telnum" placeholder='Tel. Number' 
+                                className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(10), isNumber
+                                }}/>
+                                 <Errors className="text-danger" 
+                                    model=".telnum"
+                                    show="touched" 
+                                    message={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 numbers',
+                                        maxLength: 'Must be less than 10 numbers',
+                                        isNumber: "Must be  number"
+                                    }}/>
                             </Col>
                         </Row>
 
                         <Row className="form-group">
                             <Label htmlFor="email" md={2}>Email</Label>
                             <Col md={10}>
-                                <Control.text model=".email" id="email" name="email" placeholder='Email' className="form-control"/>
+                                <Control.text model=".email" id="email" name="email" placeholder='Email'
+                                 className="form-control"
+                                 validators={{
+                                    required, validEmail
+                                }}/>
+                                  <Errors className="text-danger" 
+                                    model=".email"
+                                    show="touched" 
+                                    message={{
+                                        required: 'Required',
+                                        validEmail: 'Invalid email'
+                                    }}/>
                             </Col>
                         </Row>
 
