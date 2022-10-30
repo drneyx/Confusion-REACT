@@ -6,11 +6,14 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => !(val) && (val.length >= len);
+const isNumber = (val) => !isNaN(Number(val));
+const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+
 class  Contact extends Component {
 
     constructor(props) {
         super(props);
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -73,7 +76,17 @@ class  Contact extends Component {
                         <Row className="form-group">
                             <Label htmlFor="firstName" md={2}>First Name</Label>
                             <Col md={10}>
-                                <Control.text model=".firstName"  id="firstName" name="firstName" placeholder='First Name' className="form-control"/>
+                                <Control.text model=".firstName"  id="firstName" name="firstName" placeholder='First Name' 
+                                    className="form-control"
+                                    validators={{
+                                        required, minLength: minLength(3), maxLength: maxLength(10)
+                                    }}
+                                    />
+                                    <Errors className="text-danger" model=".firstName" show="touched" 
+                                    message={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 characters'
+                                    }}/>
                             </Col>
                         </Row>
 
