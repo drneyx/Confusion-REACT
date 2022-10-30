@@ -10,3 +10,8 @@ export const initialState = {
     comments: COMMENTS,
     promotions: PROMOTIONS,
 }
+
+
+export const Reducer = (state = initialState, action) => {
+    return state;
+}
