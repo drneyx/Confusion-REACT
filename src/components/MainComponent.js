@@ -3,13 +3,13 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import  Menu  from './MenuComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-
 import DishDetail from './DishdetailComponent';
 import Home from './HomeComponent';
-import {Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom';
+import {Routes, Route, Navigate, useParams, useLocation} from 'react-router-dom';
 import Contact from './ContantComponent';
 import About from './AboutComponent';
 import { connect } from 'react-redux';
+import withRouter from '../util/withRouter';
 
 
 const mapStateToProps = state => {
@@ -70,4 +70,4 @@ class Main extends Component {
  
 }
 
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));
