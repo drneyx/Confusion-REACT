@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Control, LocalForm } from 'react-redux-form';
+import { Control, Errors, LocalForm } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Label, Row, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 
-
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
 class  CommentForm extends Component{
 
     constructor(props){
@@ -30,10 +32,9 @@ class  CommentForm extends Component{
         })
     }
 
-    handleSubmit(event){
-        this.toggleModal();
-        alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
-        event.preventDefault();
+    handleSubmit(values){
+        console.log("Current state is: " + JSON.stringify(values))
+        alert("Current state is: " + JSON.stringify(values))
     }
 
     render() {
@@ -48,7 +49,7 @@ class  CommentForm extends Component{
                 <ModalBody className="mx-2">
                     <LocalForm onSubmit={this.handleSubmit}>
                         <Row className="form-group">
-                            <Label htmlFor="username">Rating</Label>
+                            <Label htmlFor="rating">Rating</Label>
                             <Control.select model=".rating" id="rating" name="rating"
                                 className='form-control'>
                                       <option>1</option>
@@ -63,7 +64,21 @@ class  CommentForm extends Component{
                             <Label htmlFor="name">Your Name</Label>
                             <Control.text model=".name" id="name" name="name"
                                 className="form-control"
+                                validators={{
+                                        required, minLength: minLength(3), maxLength: maxLength(15)
+                                    }}
                                 />
+
+                                <Errors
+                                    className="text-danger"
+                                    model=".name"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 numbers',
+                                        maxLength: 'Must be 15 numbers or less',
+                                    }}
+                                    />
                         </Row>
                         <Row className="form-group">
                             <Label htmlFor="name">Comment</Label>
