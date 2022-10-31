@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
+
+
+class  CommentForm extends Component{
+
+    constructor(props){
+        super(props);
+    }
+}
 
    function  RenderDish({dish}){
    
