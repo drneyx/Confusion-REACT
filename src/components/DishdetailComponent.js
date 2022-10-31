@@ -15,7 +15,7 @@ class  CommentForm extends Component{
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     toggleNav(){
@@ -30,7 +30,7 @@ class  CommentForm extends Component{
         })
     }
 
-    handleLogin(event){
+    handleSubmit(event){
         this.toggleModal();
         alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
         event.preventDefault();
@@ -39,14 +39,14 @@ class  CommentForm extends Component{
     render() {
         return (
             <div>
-            <Button outline>
+            <Button outline onClick={this.toggleModal}>
                 <span className="fa fa-pencil fa-lg"></span> Submit Comment
             </Button>
 
-            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-                <ModalBody>
-                    <LocalForm onSubmit={this.handleLogin}>
+            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
+                <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
+                <ModalBody className="mx-2">
+                    <LocalForm onSubmit={this.handleSubmit}>
                         <Row className="form-group">
                             <Label htmlFor="username">Rating</Label>
                             <Control.select model=".rating" id="rating" name="rating"
@@ -62,7 +62,7 @@ class  CommentForm extends Component{
                         </Row>
                         <Row className="form-group">
                             <Label htmlFor="name">Comment</Label>
-                            <Control.text model=".comment" id="comment" name="comment"
+                            <Control.textarea model=".comment" id="comment" name="comment"
                                 className="form-control"
                                 />
                         </Row>
