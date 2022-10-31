@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Control, LocalForm } from 'react-redux-form';
 import { Link } from 'react-router-dom';
-import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
+import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Label, Row, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 
 
@@ -8,13 +9,68 @@ class  CommentForm extends Component{
 
     constructor(props){
         super(props);
+        this.state = {
+            isNavOpen: false,
+            isModalOpen: false
+        };
+        this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+    }
+
+    toggleNav(){
+        this.setState({
+            isNavOpen: !this.state.isNavOpen
+        })
+    }
+
+    toggleModal(){
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        })
+    }
+
+    handleLogin(event){
+        this.toggleModal();
+        alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
+        event.preventDefault();
     }
 
     render() {
         return (
+            <div>
             <Button outline>
                 <span className="fa fa-pencil fa-lg"></span> Submit Comment
             </Button>
+
+            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                <ModalBody>
+                    <LocalForm onSubmit={this.handleLogin}>
+                        <Row className="form-group">
+                            <Label htmlFor="username">Rating</Label>
+                            <Control.select model=".rating" id="rating" name="rating"
+                                className='form-control'
+                                />
+                        </Row>
+
+                        <Row className="form-group">
+                            <Label htmlFor="name">Your Name</Label>
+                            <Control.text model=".name" id="name" name="name"
+                                className="form-control"
+                                />
+                        </Row>
+                        <Row className="form-group">
+                            <Label htmlFor="name">Comment</Label>
+                            <Control.text model=".comment" id="comment" name="comment"
+                                className="form-control"
+                                />
+                        </Row>
+                        <Button type="submit" value="submit" color='primary'>Submit</Button>
+                    </LocalForm>
+                </ModalBody>
+            </Modal>
+            </div>
         )
     }
 }
