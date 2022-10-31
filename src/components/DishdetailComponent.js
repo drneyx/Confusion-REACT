@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 
 
 
@@ -8,6 +8,14 @@ class  CommentForm extends Component{
 
     constructor(props){
         super(props);
+    }
+
+    render() {
+        return (
+            <Button outline>
+                <span className="fa fa-pencil fa-lg"></span> Submit Comment
+            </Button>
+        )
     }
 }
 
@@ -45,6 +53,7 @@ class  CommentForm extends Component{
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments here</h4>
                     <ul style ={mystyle}>{listItems}</ul>
+                    <CommentForm/>
                 </div>
             );
         }
