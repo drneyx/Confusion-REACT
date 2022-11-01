@@ -10,7 +10,7 @@ import Contact from './ContantComponent';
 import About from './AboutComponent';
 import { connect } from 'react-redux';
 import withRouter from '../util/withRouter';
-
+import { addComment } from '../redux/ActionCreaters';
 
 const mapStateToProps = state => {
   return {
@@ -20,6 +20,10 @@ const mapStateToProps = state => {
     leaders: state.leaders,
   }
 }
+ 
+const mapDispatchToProps = (dispatch) => ({
+  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+})
 
 class Main extends Component {
 
@@ -68,4 +72,4 @@ class Main extends Component {
  
 }
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
