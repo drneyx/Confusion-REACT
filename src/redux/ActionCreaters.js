@@ -31,3 +31,9 @@ export const dishesFailed = () => ({
     payload: errmess
 
 });
+
+
+export const addDishes = (dishes) => ({
+    type: ActionTypes.ADD_DISHES,
+    payload: dishes,
+});
