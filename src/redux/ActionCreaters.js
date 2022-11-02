@@ -26,11 +26,11 @@ export const dishesLoading = () => ({
 });
 
 
-export const dishesFailed = () => ({
-    type: ActionTypes.DISHES_FAILED,
-    payload: errMess
+// export const dishesFailed = () => ({
+//     type: ActionTypes.DISHES_FAILED,
+//     payload: errMess
 
-});
+// });
 
 
 export const addDishes = (dishes) => ({
