@@ -11,6 +11,8 @@ import About from './AboutComponent';
 import { connect } from 'react-redux';
 import withRouter from '../util/withRouter';
 import { addComment, fetchDishes } from '../redux/ActionCreaters';
+import { actions } from 'react-redux-form';
+
 
 const mapStateToProps = state => {
   return {
