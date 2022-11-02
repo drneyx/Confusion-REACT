@@ -66,7 +66,7 @@ export const fetchPromos = () => (dispatch) => {
 
    return fetch(baseUrl + 'promotions')
           .then(response => response.json())
-          .then(promos => dispatch(addPromos(promosLoading)));
+          .then(promos => dispatch(addPromos(promos)));
 }
 
 export const promosLoading = () => ({
