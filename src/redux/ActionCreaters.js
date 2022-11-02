@@ -21,3 +21,13 @@ export const fetchDishes = () => (dispatch) => {
     }, 2000);
 }
 
+export const dishesLoading = () => ({
+    type: ActionTypes.DISHES_LOADING
+});
+
+
+export const dishesFailed = () => ({
+    type: ActionTypes.DISHES_FAILED,
+    payload: errmess
+
+});
