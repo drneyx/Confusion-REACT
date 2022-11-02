@@ -8,7 +8,7 @@ export const addComment = (comment) => ({
     payload: comment
 });
 
-export const postComment = (dishId, rating, author, comment) => {
+export const postComment = (dishId, rating, author, comment) => (dispatch) => {
 
     const newComment = {
         dishId: dishId,
@@ -20,8 +20,32 @@ export const postComment = (dishId, rating, author, comment) => {
 
     return fetch(baseUrl + 'comments', {
         method: 'POST',
-        body: JSON.stringify(newComment)
-    })
+        body: JSON.stringify(newComment),
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin'
+        })
+        .then(response => {
+            if (response.ok){
+                return response;
+            }
+            else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+          },
+          error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then(response => dispatch(addComment(response)))
+        .catch(err => {
+            console.log("Post comments", err.message)
+            alert('Your comment could not be posted\nError: ' + err.message)
+        });
 
 }
 
