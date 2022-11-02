@@ -143,7 +143,7 @@ class  CommentForm extends Component{
 
 
     const DishDetail = (props) => {
-        if(props.dish != null) {
+        if(props.dish != null) 
             // console.log(props.dish);
         return (
             <div className="container">
@@ -165,10 +165,12 @@ class  CommentForm extends Component{
                     dishId={props.dish.id} />
                 </div>
             </div>
-        )
-        }else{
-            <div></div>
-        }
+        );
+        else 
+            return(
+                <div></div>
+            )
+          
     }
 
 
