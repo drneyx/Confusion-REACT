@@ -3,15 +3,14 @@ import { DISHES } from '../shared/dishes';
 import { baseUrl } from '../shared/baseUrl';
 
 
-export const addComment = (dishId, rating, author, comment) => ({
+export const addComment = (comment) => ({
     type: ActionTypes.ADD_COMMENT,
-    payload: {
-        dishId: dishId,
-        rating: rating,
-        author: author,
-        comment: comment
-    }
+    payload: comment
 });
+
+export const postComment = (dishId, rating, author, comment) => {
+
+}
 
 
 export const fetchDishes = () => (dispatch) => {
@@ -73,7 +72,7 @@ export const fetchComments = () => (dispatch) => {
             })
             .then(response => response.json())
             .then(comments => dispatch(addComments(comments)))
-            .catch(err => dispatch(dishesFailed(err.message)));
+            .catch(err => dispatch(commentsFailed(err.message)));
             
 }
 
@@ -112,7 +111,7 @@ export const fetchPromos = () => (dispatch) => {
             })
             .then(response => response.json())
             .then(promos => dispatch(addPromos(promos)))
-            .catch(err => dispatch(dishesFailed(err.message)));
+            .catch(err => dispatch(promosFailed(err.message)));
 }
 
 export const promosLoading = () => ({
