@@ -59,3 +59,29 @@ export const addComments = (comments) => ({
     type: ActionTypes.ADD_COMMENTS,
     payload: comments,
 });
+
+
+export const fetchPromos = () => (dispatch) => {
+    dispatch(promosLoading(true));
+
+   return fetch(baseUrl + 'promotions')
+          .then(response => response.json())
+          .then(promos => dispatch(addPromos(promosLoading)));
+}
+
+export const promosLoading = () => ({
+    type: ActionTypes.PROMOS_LOADING
+});
+
+
+export const promosFailed = (errMess) => ({
+    type: ActionTypes.PROMOS_FAILED,
+    payload: errMess
+
+});
+
+
+export const addPromos = (promos) => ({
+    type: ActionTypes.ADD_PROMOS,
+    payload: promos,
+});
