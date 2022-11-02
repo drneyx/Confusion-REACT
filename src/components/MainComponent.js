@@ -49,6 +49,7 @@ class Main extends Component {
           <DishDetail 
           dish={this.props.dishes.filter((dish) => dish.id === parseInt(dishId, 10))[0]} 
           comments={this.props.comments.filter((comment) => comment.dishId === parseInt(dishId, 10))}
+          addComment={this.props.addComment}
           />
       )
   }

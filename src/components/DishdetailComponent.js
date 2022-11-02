@@ -7,6 +7,7 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
+
 class  CommentForm extends Component{
 
     constructor(props){
@@ -33,8 +34,8 @@ class  CommentForm extends Component{
     }
 
     handleSubmit(values){
-        console.log("Current state is: " + JSON.stringify(values))
-        alert("Current state is: " + JSON.stringify(values))
+       this.toggleModal();
+       this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
     }
 
     render() {
@@ -110,7 +111,7 @@ class  CommentForm extends Component{
         )
     }
 
-   function RenderComments({comment}){
+   function RenderComments({comment, addComment, dishId}){
         const mystyle = {
             paddingLeft: 0,
             listStyle: 'none'
@@ -129,7 +130,7 @@ class  CommentForm extends Component{
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments here</h4>
                     <ul style ={mystyle}>{listItems}</ul>
-                    <CommentForm/>
+                    <CommentForm dishId={dishId} addComment={addComment}/>
                 </div>
             );
         }
@@ -159,7 +160,9 @@ class  CommentForm extends Component{
                 </div>
                 <div className="row">
                     <RenderDish dish={props.dish} /> 
-                    <RenderComments  comment={props.comments} />
+                    <RenderComments  comment={props.comments}
+                    addComment={props.addComment}
+                    dishId={props.dish.id} />
                 </div>
             </div>
         )
