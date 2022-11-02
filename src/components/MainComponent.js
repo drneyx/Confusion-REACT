@@ -10,7 +10,7 @@ import Contact from './ContantComponent';
 import About from './AboutComponent';
 import { connect } from 'react-redux';
 import withRouter from '../util/withRouter';
-import { addComment } from '../redux/ActionCreaters';
+import { addComment, fetchDishes } from '../redux/ActionCreaters';
 
 const mapStateToProps = state => {
   return {
@@ -22,13 +22,18 @@ const mapStateToProps = state => {
 }
  
 const mapDispatchToProps = (dispatch) => ({
-  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment));
+  fetchDishes: (dish) => {dispatch(fetchDishes())}
 })
 
 class Main extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
+    this.props.fetchDishes();
   }
 
   render() {
