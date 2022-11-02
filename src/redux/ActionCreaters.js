@@ -18,6 +18,11 @@ export const fetchDishes = () => (dispatch) => {
     dispatch(dishesLoading(true));
 
    return fetch(baseUrl + 'dishes')
+          .then(response => {
+            if (response.ok){
+                return response
+            }
+          })
           .then(response => response.json())
           .then(dishes => dispatch(addDishes(dishes)));
 }
