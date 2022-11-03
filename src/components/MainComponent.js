@@ -56,7 +56,9 @@ class Main extends Component {
             promotion={this.props.promotions.promotions.filter((promo) => promo.featured)[0]}
             promosLoading={this.props.promotions.isLoading}
             promosErrMess={this.props.promotions.errMess}
-            leader={this.props.leaders.filter((leader) => leader.featured)[0]}
+            leader={this.props.leaders.leaders.filter((leader) => leader.featured)[0]}
+            leadersLoading={this.props.leaders.isLoading}
+            leadersErrMess={this.props.leaders.errMess}
            
             />
         )
@@ -85,7 +87,7 @@ class Main extends Component {
                     <Route exact path="/menu"  element={<Menu dishes={this.props.dishes}/>}/>
                     <Route path="/menu/:dishId" element={<DishWithId />}/>
                     <Route exact path="/contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />}/>
-                    <Route exact path="/aboutus" element={<About leaders={this.props.leaders}/>}/>
+                    <Route exact path="/aboutus" element={<About leaders={this.props.leaders.leaders}/>}/>
                     <Route path="/" element={<Navigate to ="/home" />}/>
                 </Routes>
             <Footer/> 
