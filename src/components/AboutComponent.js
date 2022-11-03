@@ -2,30 +2,41 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function About(props) {
 
     function RenderLeader(props){
         return (
-            <div key={props.leader.id} className="col-12 mt-5">
-                <Media tag="ul" className="row">
-                    <Media left middle className="col-2">
-                        <Media object src={baseUrl + props.leader.image} alt={props.leader.name} />
-                    </Media>
-                    <Media body className="col-10">
-                        <Media heading>{props.leader.name}</Media>
-                        <p>{props.leader.abbr} {props.leader.designation}</p>
-                        <p>{props.leader.description}</p>
-                    </Media>
-                </Media>
-            </div>
+            <Stagger in>
+                <Fade in>
+                    <div key={props.leader.id} className="col-12 mt-5">
+                        <Media tag="ul" className="row">
+                            <Media left middle className="col-2">
+                                <Media object src={baseUrl + props.leader.image} alt={props.leader.name} />
+                            </Media>
+                            <Media body className="col-10">
+                                <Media heading>{props.leader.name}</Media>
+                                <p>{props.leader.abbr} {props.leader.designation}</p>
+                                <p>{props.leader.description}</p>
+                            </Media>
+                        </Media>
+                    </div>
+                </Fade>
+            </Stagger>
         )
 
     }
 
     const leaders = props.leaders.map((leader) => {
         return (
-            <RenderLeader leader={leader}/>
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                <RenderLeader leader={leader}/>
+            </FadeTransform>
         );
     });
 

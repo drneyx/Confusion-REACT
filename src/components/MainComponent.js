@@ -26,7 +26,7 @@ const mapStateToProps = state => {
  
 const mapDispatchToProps = (dispatch) => ({
   postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
-  postFeedback: (firstname, lastname, telnum, contactType, email, message) => dispatch(postFeedback(firstname, lastname, telnum, contactType, email, message)),
+  postFeedback: (firstname, lastname, telnum, email, agree, contactType, message) => dispatch(postFeedback(firstname, lastname, telnum, email, agree, contactType, message)),
   fetchDishes: () => {dispatch(fetchDishes())},
   resetFeedbackForm: () => {dispatch(actions.reset('feedback'))},
   fetchComments: () => {dispatch(fetchComments())},
@@ -87,7 +87,7 @@ class Main extends Component {
                     <Route path="/home" element={<HomePage/>}/>
                     <Route exact path="/menu"  element={<Menu dishes={this.props.dishes}/>}/>
                     <Route path="/menu/:dishId" element={<DishWithId />}/>
-                    <Route exact path="/contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />}/>
+                    <Route exact path="/contactus" element={<Contact postFeedback={this.props.postFeedback} />}/>
                     <Route exact path="/aboutus" element={<About leaders={this.props.leaders.leaders}/>}/>
                     <Route path="/" element={<Navigate to ="/home" />}/>
                 </Routes>
