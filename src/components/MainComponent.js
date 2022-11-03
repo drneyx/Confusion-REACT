@@ -10,7 +10,7 @@ import Contact from './ContantComponent';
 import About from './AboutComponent';
 import { connect } from 'react-redux';
 import withRouter from '../util/withRouter';
-import { postComment, fetchComments, fetchDishes, fetchPromos, fetchLeaders } from '../redux/ActionCreaters';
+import { postComment, fetchComments, fetchDishes, fetchPromos, fetchLeaders, postFeedback } from '../redux/ActionCreaters';
 import { actions } from 'react-redux-form';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -26,6 +26,7 @@ const mapStateToProps = state => {
  
 const mapDispatchToProps = (dispatch) => ({
   postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
+  postFeedback: (firstname, lastname, telnum, contactType, email, message) => dispatch(postFeedback(firstname, lastname, telnum, contactType, email, message)),
   fetchDishes: () => {dispatch(fetchDishes())},
   resetFeedbackForm: () => {dispatch(actions.reset('feedback'))},
   fetchComments: () => {dispatch(fetchComments())},

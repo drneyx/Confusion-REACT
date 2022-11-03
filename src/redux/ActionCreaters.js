@@ -249,10 +249,10 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
             throw errmess;
         })
         .then(response => response.json())
-        .then(response => dispatch(addComment(response)))
+        .then(response => dispatch(addFeedback(response)))
         .catch(err => {
-            console.log("Post comments", err.message)
-            alert('Your comment could not be posted\nError: ' + err.message)
+            console.log("Feedback", err.message)
+            alert('Your feedback could not be posted\nError: ' + err.message)
         });
 
 }
