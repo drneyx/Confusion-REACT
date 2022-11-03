@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Label, Row, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
-
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -102,13 +102,18 @@ class  CommentForm extends Component{
    
         return (
         <div className="col-12 col-md-5 m-1">
-            <Card>
-                <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name}/>
-                <CardBody>
-                    <CardTitle>{dish.name}</CardTitle>
-                    <CardText>{dish.description}</CardText>
-                </CardBody>
-            </Card>
+             <FadeTransform in 
+            transformProps={{
+                exitTransform: 'scale(0.5) translateY(-50%)'
+            }}>
+                <Card>
+                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name}/>
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </FadeTransform>
         </div>
         )
     }
@@ -121,18 +126,22 @@ class  CommentForm extends Component{
 
         if(comment != null){
             const listItems = comment.map(comm =>
-                <li key={comm.id}>
-                   <p>{comm.comment}</p>
-                   <p>--{comm.author}, {comment.date}</p>
-                   {/* {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} */}
+                <Fade in>
+                    <li key={comm.id}>
+                    <p>{comm.comment}</p>
+                    <p>--{comm.author}, {comment.date}</p>
+                    {/* {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} */}
 
-                </li>
+                    </li>
+                </Fade>
               );
             return (
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments here</h4>
                     <ul style ={mystyle}>{listItems}</ul>
-                    <CommentForm dishId={dishId} postComment={postComment}/>
+                    <Stagger in>
+                        <CommentForm dishId={dishId} postComment={postComment}/>
+                    </Stagger>
                 </div>
             );
         }
