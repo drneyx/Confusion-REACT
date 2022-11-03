@@ -10,7 +10,7 @@ import Contact from './ContantComponent';
 import About from './AboutComponent';
 import { connect } from 'react-redux';
 import withRouter from '../util/withRouter';
-import { postComment, fetchComments, fetchDishes, fetchPromos } from '../redux/ActionCreaters';
+import { postComment, fetchComments, fetchDishes, fetchPromos, fetchLeaders } from '../redux/ActionCreaters';
 import { actions } from 'react-redux-form';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -30,6 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {dispatch(actions.reset('feedback'))},
   fetchComments: () => {dispatch(fetchComments())},
   fetchPromos: () => {dispatch(fetchPromos())},
+  fetchLeaders: () => {dispatch(fetchLeaders())},
 })
 
 class Main extends Component {
@@ -42,6 +43,7 @@ class Main extends Component {
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
+    this.props.fetchLeaders();
   }
 
   render() {
