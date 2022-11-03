@@ -1,7 +1,11 @@
-import { LEADERS } from '../shared/leaders';
+import * as ActionTypes from "./ActionType";
 
 
-export const Leaders = (state = LEADERS, action) => {
+export const Leaders = (state = {
+    errMess: null, 
+    isLoading: true,
+    leaders: []
+}, action) => {
     switch (action.type) {
         default:
             return state
