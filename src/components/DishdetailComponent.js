@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Label, Row, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
-
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -37,7 +37,7 @@ class  CommentForm extends Component{
 
     handleSubmit(values){
        this.toggleModal();
-       this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
+       this.props.postComment(this.props.dishId, values.rating, values.name, values.comment);
     }
 
     render() {
@@ -102,18 +102,23 @@ class  CommentForm extends Component{
    
         return (
         <div className="col-12 col-md-5 m-1">
-            <Card>
-                <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name}/>
-                <CardBody>
-                    <CardTitle>{dish.name}</CardTitle>
-                    <CardText>{dish.description}</CardText>
-                </CardBody>
-            </Card>
+             <FadeTransform in 
+            transformProps={{
+                exitTransform: 'scale(0.5) translateY(-50%)'
+            }}>
+                <Card>
+                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name}/>
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </FadeTransform>
         </div>
         )
     }
 
-   function RenderComments({comment, addComment, dishId}){
+   function RenderComments({comment, postComment, dishId}){
         const mystyle = {
             paddingLeft: 0,
             listStyle: 'none'
@@ -121,18 +126,22 @@ class  CommentForm extends Component{
 
         if(comment != null){
             const listItems = comment.map(comm =>
-                <li key={comm.id}>
-                   <p>{comm.comment}</p>
-                   <p>--{comm.author}, {comment.date}</p>
-                   {/* {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} */}
+                <Fade in>
+                    <li key={comm.id}>
+                    <p>{comm.comment}</p>
+                    <p>--{comm.author}, {comment.date}</p>
+                    {/* {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} */}
 
-                </li>
+                    </li>
+                </Fade>
               );
             return (
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments here</h4>
                     <ul style ={mystyle}>{listItems}</ul>
-                    <CommentForm dishId={dishId} addComment={addComment}/>
+                    <Stagger in>
+                        <CommentForm dishId={dishId} postComment={postComment}/>
+                    </Stagger>
                 </div>
             );
         }
@@ -183,7 +192,7 @@ class  CommentForm extends Component{
                 <div className="row">
                     <RenderDish dish={props.dish} /> 
                     <RenderComments  comment={props.comments}
-                    addComment={props.addComment}
+                    postComment={props.postComment}
                     dishId={props.dish.id} />
                 </div>
             </div>
